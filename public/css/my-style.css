@@ -1,0 +1,36 @@
+.active-nav-item {
+    color: #81A1C1;
+}
+
+/* .card { */
+    /* width: calc(100% / 8); */
+/* } */
+
+.card-image {
+    width: 100%;
+    /* object-fit: cover; */
+    /* object-position: center; */
+}
+
+.card-image-preview {
+    width: 10%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.spa {
+    height: calc(100vh - 4rem);
+}
+
+.spa-2 {
+    height: calc(100vh - 16rem);
+}
+
+.fade-out {
+    transition: opacity 1s ease-in-out; /* Define the transition effect */
+    opacity: 1; /* Initially set opacity to fully visible */
+}
+
+.fade-out.hide {
+    opacity: 0; /* Set opacity to fully transparent when the 'hide' class is added */
+}

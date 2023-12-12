@@ -15,7 +15,7 @@
                     <?php $user = session()->get('user'); ?>
                     <!-- Check if user is logged in -->
                     <span class="pl-3 block text-sm text-[#E5E9F0]">
-                        <?= esc($user['firstName']) . ' ' . $user['lastName'] ?>
+                        <?= esc($user['namaDepan']) . ' ' . $user['namaBelakang'] ?>
                     </span>
                 <?php else : ?>
                     <span class="pl-3 block text-sm text-[#E5E9F0]">Tamu</span>
@@ -33,7 +33,7 @@
                             <a href="<?= base_url() ?>login" class="block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 text-[#E5E9F0] dark:hover:text-white">Log In</a>
                         </li>
                         <li>
-                            <a href="<?= base_url() ?>resgister" class="block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 text-[#E5E9F0] dark:hover:text-white">Register</a>
+                            <a href="<?= base_url() ?>register" class="block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 text-[#E5E9F0] dark:hover:text-white">Register</a>
                         </li>
                     <?php endif; ?>
                 </ul>

@@ -15,7 +15,7 @@
           <?php $user = session()->get('user'); ?>
           <!-- Check if user is logged in -->
           <span class="pl-3 block text-sm text-[#E5E9F0]">
-            <?= esc($user['firstName']) . ' ' . $user['lastName'] ?>
+            <?= esc($user['namaDepan']) . ' ' . $user['namaBelakang'] ?>
           </span>
         <?php else : ?>
           <span class="pl-3 block text-sm text-[#E5E9F0]">Tamu</span>

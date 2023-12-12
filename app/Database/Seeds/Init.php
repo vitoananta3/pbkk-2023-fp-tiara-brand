@@ -211,6 +211,6 @@ class Init extends Seeder
             ],
         ];
 
-        $this->db->table('users')->insertBatch($data_pengguna);
+        $this->db->table('pengguna')->insertBatch($data_pengguna);
     }
 }

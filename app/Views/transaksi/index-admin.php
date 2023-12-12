@@ -33,14 +33,8 @@
         </div>
     <?php endif; ?>
     <?php if (empty($keranjangTidakActiveAll)) : ?>
-        <div class="flex gap-4">
-            <a href="<?= base_url(); ?>pakaian" class="max-w-screen-xl flex gap-2 text-sm bg-[#434C5E] hover:bg-[#81A1C1] text-[#E5E9F0] hover:text-[#434C5E] rounded-md px-3 py-2.5 transition-colors duration-200 border-2 border-black">
-                <div>Belanja Sekarang</div>
-            </a>
-        </div>
         <div class="spa flex flex-col items-center mt-8 text-[#434E5C] text-xl gap-4">
-            <div>Tidak ada transaksi yang sedang berlangsung ataupun selesai</div>
-            <div>Yuk belanja dengan menekan tombol Belanja Sekarang di atas</div>
+            <div>Tidak ada transaksi </div>
         </div>
     <?php else : ?>
         <!-- <div class="mx-auto max-w-screen-xl justify-start px-6 md:flex md:space-x-6 xl:px-0 text-lg mb-4 w-full">Transaksi yang sedang menunggu konfirmasi: </div> -->

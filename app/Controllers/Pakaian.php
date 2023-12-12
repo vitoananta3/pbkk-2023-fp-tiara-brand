@@ -22,7 +22,7 @@ class Pakaian extends BaseController
         $data = [
             'title' => 'Pakaian | Tiara Brand',
             'page' => 'pakaian',
-            'pakaian' => $this->pakaianModel->getPakaianAll()
+            'pakaianAll' => $this->pakaianModel->getPakaianAll()
         ];
 
         return view('pakaian/index', $data);
@@ -58,7 +58,7 @@ class Pakaian extends BaseController
             'title' => 'Tambah Pakaian | Tiara Brand',
             'page' => 'pakaian',
             'validation' => session('validation_errors'),
-            'kategori' => $this->kategoriModel->getKategoriAll()
+            'kategoriAll' => $this->kategoriModel->getKategoriAll()
         ];
         return view('pakaian/create', $data);
     }
@@ -109,12 +109,11 @@ class Pakaian extends BaseController
                 ]
             ],
             'gambar' => [
-                'rules' => 'max_size[gambar,1024]|is_image[gambar]|mime_in[gambar,image/jpg,image/jpeg,image/png]|max_dims[gambar,510,784]',
+                'rules' => 'max_size[gambar,1024]|is_image[gambar]|mime_in[gambar,image/jpg,image/jpeg,image/png]',
                 'errors' => [
                     'max_size' => 'Ukuran file gambar terlalu besar. (maks 1MB)',
                     'is_image' => 'Gambar bukan bertipe gambar',
                     'mime_in' => 'Gambar bukan bertipe gambar',
-                    'max_dims' => 'Dimensi gambar terlalu besar (maks 510x784)'
                 ]
             ],
             'kategori_id' => [
@@ -127,6 +126,7 @@ class Pakaian extends BaseController
         ];
 
         if (!$this->validate($rules)) {
+            // dd($validation->getErrors());
             session()->setFlashdata('validation_errors', $validation->getErrors());
             return redirect()->to('/pakaian/create')->withInput();
         }
@@ -135,7 +135,7 @@ class Pakaian extends BaseController
         // dd($gambarFile);
 
         if ($gambarFile->getError() == 4) {
-            $gambarFileName = 'no-gambar.jpg';
+            $gambarFileName = 'tidak-ada-gambar.jpg';
         } else {
             $editedGambarFile = \Config\Services::image();
             $gambarFile->move('assets/gambar-pakaian');
@@ -182,7 +182,7 @@ class Pakaian extends BaseController
             'page' => 'pakaian',
             'validation' => session('validation_errors'),
             'pakaian' => $this->pakaianModel->getPakaianBySlug($slug),
-            'kategori' => $this->kategoriModel->getKategoriAll(),
+            'kategoriAll' => $this->kategoriModel->getKategoriAll(),
         ];
 
         return view('pakaian/edit', $data);
@@ -234,12 +234,11 @@ class Pakaian extends BaseController
                 ]
             ],
             'gambar' => [
-                'rules' => 'max_size[cover,1024]|is_image[cover]|mime_in[cover,image/jpg,image/jpeg,image/png]|max_dims[cover,510,784]',
+                'rules' => 'max_size[gambar,1024]|is_image[gambar]|mime_in[gambar,image/jpg,image/jpeg,image/png]',
                 'errors' => [
-                    'max_size' => 'Cover file size is too big. (max 1MB)',
-                    'is_image' => 'Cover bukan bertipe gambar',
-                    'mime_in' => 'Cover bukan bertipe gambar',
-                    'max_dims' => 'Cover dimension is too big. (max 510x784)'
+                    'max_size' => 'Ukuran file gambar terlalu besar. (maks 1MB)',
+                    'is_image' => 'Gambar bukan bertipe gambar',
+                    'mime_in' => 'Gambar bukan bertipe gambar',
                 ]
             ],
             'kategori_id' => [
@@ -273,12 +272,12 @@ class Pakaian extends BaseController
                     ->fit(255, 392, 'center')
                     ->save('assets/gambar-pakaian/' . $gambarFile->getName());
                 $gambarFileName = $gambarFile->getName();
-                if ($this->request->getVar('oldGambar') != 'no-gambar.jpg') {
+                if ($this->request->getVar('oldGambar') != 'tidak-ada-gambar.jpg') {
                     unlink('assets/gambar-pakaian/' . $this->request->getVar('oldGambar'));
                 }
             } else {
                 $gambarFileName = $gambarFile->getName();
-                if ($this->request->getVar('oldGambar') != 'no-gambar.jpg') {
+                if ($this->request->getVar('oldGambar') != 'tidak-ada-gambar.jpg') {
                     unlink('assets/gambar-pakaian/' . $this->request->getVar('oldGambar'));
                 }
             }
@@ -308,8 +307,8 @@ class Pakaian extends BaseController
             return redirect()->to('/login');
         }
 
-        if ($this->pakaianModel->getPakaianById($id)['cover'] != 'no-gambar.jpg') {
-            unlink('assets/gambar-pakaian/' . $this->pakaianModel->getPakaianById($id)['cover']);
+        if ($this->pakaianModel->getPakaianById($id)['gambar'] != 'tidak-ada-gambar.jpg') {
+            unlink('assets/gambar-pakaian/' . $this->pakaianModel->getPakaianById($id)['gambar']);
         }
 
         $this->pakaianModel->delete($id);

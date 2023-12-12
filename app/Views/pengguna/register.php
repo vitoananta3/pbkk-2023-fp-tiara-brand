@@ -2,9 +2,6 @@
 <?= $this->section('content') ?>
 <div class="flex flex-col h-screen bg-[#434C5E] justify-center items-center">
     <div class="bg-[#E5E9F0] w-5/12 flex rounded-md outline p-12">
-        <!-- <div class="h-full w-1/2 bg-cover rounded-l-md"
-                style="background-image: url(<?= base_url() ?>assets/images/bookshelf-2.jpg)">
-            </div> -->
         <div class="flex flex-col items-center text-[#434C5E] w-full">
             <p class="text-lg font-semibold mb-4">Register Tiara Brand</p>
             <div class="my-2"></div>
@@ -83,8 +80,8 @@
                     </a>
                 </div>
                 <div class="self-end">
-                    <a href="/books" class="text-sm border-2 border-[#434C5E] hover:bg-[#81A1C1] text-[#434C5E] hover:text-[#434C5E] rounded-md px-5 py-2.5 transition-colors duration-200 opacity-70">
-                        Kemabli ke pakaian
+                    <a href="/pakaian" class="text-sm border-2 border-[#434C5E] hover:bg-[#81A1C1] text-[#434C5E] hover:text-[#434C5E] rounded-md px-5 py-2.5 transition-colors duration-200 opacity-70">
+                        Kemabli ke list pakaian
                     </a>
                 </div>
             </div>

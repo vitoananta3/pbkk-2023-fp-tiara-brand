@@ -21,8 +21,6 @@
         </div>
     <?php endif; ?>
     <div class="bg-[#E5E9F0] w-5/12 flex rounded-md outline p-12">
-        <!-- <div class="h-full w-1/2 bg-cover rounded-l-md" style="background-image: url(<?= base_url() ?>assets/images/bookshelf-1.jpg)">
-        </div> -->
         <div class="flex flex-col items-center w-full text-[#434C5E]">
             <p class="text-lg font-semibold">Login Tiara Brand</p>
             <div class="my-2"></div>

@@ -2,7 +2,7 @@
   "devDependencies": {
     "tailwindcss": "^3.3.5"
   },
-  "name": "justbookstore",
+  "name": "tiara-brand",
   "description": "## What is CodeIgniter?",
   "version": "1.0.0",
   "main": "tailwind.config.js",

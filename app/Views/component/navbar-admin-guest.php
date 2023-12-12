@@ -1,7 +1,7 @@
 <nav class="bg-[#434C5E] fixed w-full z-20 top-0 start-0">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto py-4 ">
         <a href="<?= base_url() ?>" class="flex items-center space-x-3 rtl:space-x-reverse ">
-            <span class="self-center text-2xl font-semibold whitespace-nowrap text-[#E5E9F0]" id="nav-logo">JustBookStore</span>
+            <span class="self-center text-2xl font-semibold whitespace-nowrap text-[#E5E9F0]" id="nav-logo">Tiara Brand</span>
         </a>
         <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse bg-or">
             <button type="button" class="flex text-sm items-center" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">

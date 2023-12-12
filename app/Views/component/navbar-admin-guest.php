@@ -26,11 +26,11 @@
                 <ul class="py-2" aria-labelledby="user-menu-button">
                     <?php if (session()->has('user')) : ?>
                         <li>
-                            <a href="<?= base_url() ?>logout" class="block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 text-[#E5E9F0] dark:hover:text-white">Log out</a>
+                            <a href="<?= base_url() ?>logout" class="block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 text-[#E5E9F0] dark:hover:text-white">Logout</a>
                         </li>
                     <?php else : ?>
                         <li>
-                            <a href="<?= base_url() ?>login" class="block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 text-[#E5E9F0] dark:hover:text-white">Log In</a>
+                            <a href="<?= base_url() ?>login" class="block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 text-[#E5E9F0] dark:hover:text-white">Login</a>
                         </li>
                         <li>
                             <a href="<?= base_url() ?>register" class="block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 text-[#E5E9F0] dark:hover:text-white">Register</a>

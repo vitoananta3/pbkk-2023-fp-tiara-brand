@@ -1,7 +1,7 @@
 <nav class="bg-[#434C5E] fixed w-full z-20 top-0 start-0">
   <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto py-4 ">
     <a href="<?= base_url() ?>" class="flex items-center space-x-3 rtl:space-x-reverse ">
-      <span class="self-center text-2xl font-semibold whitespace-nowrap text-[#E5E9F0]" id="nav-logo">JustBookStore</span>
+      <span class="self-center text-2xl font-semibold whitespace-nowrap text-[#E5E9F0]" id="nav-logo">Tiara Brand</span>
     </a>
     <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse bg-or">
       <button type="button" class="flex text-sm items-center" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
@@ -26,11 +26,11 @@
         <ul class="py-2" aria-labelledby="user-menu-button">
           <?php if (session()->has('user')) : ?>
             <li>
-              <a href="<?= base_url() ?>logout" class="block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 text-[#E5E9F0] dark:hover:text-white">Log Out</a>
+              <a href="<?= base_url() ?>logout" class="block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 text-[#E5E9F0] dark:hover:text-white">Logout</a>
             </li>
           <?php else : ?>
             <li>
-              <a href="<?= base_url() ?>login" class="block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 text-[#E5E9F0] dark:hover:text-white">Log In</a>
+              <a href="<?= base_url() ?>login" class="block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 text-[#E5E9F0] dark:hover:text-white">Login</a>
             </li>
             <li>
               <a href="<?= base_url() ?>register" class="block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 text-[#E5E9F0] dark:hover:text-white">Register</a>

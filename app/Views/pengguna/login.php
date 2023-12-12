@@ -73,7 +73,7 @@
                 </div>
                 <div class="self-end">
                     <a href="/pakaian" class="text-sm border-2 border-[#434C5E] hover:bg-[#81A1C1] text-[#434C5E] hover:text-[#434C5E] rounded-md px-5 py-2.5 transition-colors duration-200 opacity-70 ">
-                        Kembali ke pakaian
+                        Kembali ke list pakaian
                     </a>
                 </div>
             </div>

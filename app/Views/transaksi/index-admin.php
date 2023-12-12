@@ -32,7 +32,7 @@
             </div>
         </div>
     <?php endif; ?>
-    <?php if (empty($keranjangAll)) : ?>
+    <?php if (empty($keranjangTidakActiveAll)) : ?>
         <div class="flex gap-4">
             <a href="<?= base_url(); ?>pakaian" class="max-w-screen-xl flex gap-2 text-sm bg-[#434C5E] hover:bg-[#81A1C1] text-[#E5E9F0] hover:text-[#434C5E] rounded-md px-3 py-2.5 transition-colors duration-200 border-2 border-black">
                 <div>Belanja Sekarang</div>
@@ -43,9 +43,10 @@
             <div>Yuk belanja dengan menekan tombol Belanja Sekarang di atas</div>
         </div>
     <?php else : ?>
+        <!-- <div class="mx-auto max-w-screen-xl justify-start px-6 md:flex md:space-x-6 xl:px-0 text-lg mb-4 w-full">Transaksi yang sedang menunggu konfirmasi: </div> -->
         <div class="mx-auto max-w-screen-xl justify-center px-6 md:flex md:space-x-6 xl:px-0 w-full">
             <div class="rounded-lg md:w-2/3">
-                <?php if (empty($keranjangAll)) : ?>
+                <?php if (empty($keranjangTidakActiveAll)) : ?>
                     <div class="flex justify-center">
                         <a href="<?= base_url(); ?>pakaian" class="bg-[#434C5E] hover:bg-[#81A1C1] text-[#E5E9F0] hover:text-[#434C5E] rounded-md px-3 py-2.5 transition-colors duration-200 border-2 border-black">
                             Belanja Sekarang
@@ -58,9 +59,9 @@
                 <?php else : ?>
                 <?php endif; ?>
                 <?php
-                $transactionCounter = 1; // Initialize the transaction counter outside the loop
+                $transactionCounter = 1;
 
-                foreach ($keranjangAll as $keranjang) :
+                foreach ($keranjangTidakActiveAll as $keranjang) :
                 ?>
                     <div class="justify-between mb-6 rounded-lg bg-white p-6 shadow-md sm:flex sm:justify-start">
                         <div class="sm:ml-4 sm:flex sm:justify-between gap-8 w-full">
@@ -79,7 +80,7 @@
                                         <div class="my-2 flex items-center gap-2">
                                             <div>Status:</div>
                                             <span class="font-bold text-green-600">Selesai</span>
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="green" class="w-5 h-5">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="green" class="w-6 h-6">
                                                 <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                             </svg>
                                         </div>
@@ -109,10 +110,12 @@
             </div>
             <?php
             $transactionstotalHarga = 0;
+            $transactionDoneCounter = 0;
 
-            foreach ($keranjangAll as $keranjang) :
+            foreach ($kerajanganDoneAll as $keranjang) :
                 $totalHarga = $keranjang['totalHarga'];
                 $transactionstotalHarga += $totalHarga;
+                $transactionDoneCounter++;
             endforeach;
 
             // Format the total price for display
@@ -120,15 +123,15 @@
             ?>
             <!-- Sub total -->
             <div class="mt-6 h-full rounded-lg border bg-white p-6 shadow-md md:mt-0 md:w-1/3">
-                <p class="text-lg font-bold mb-4">Transaksi Anda</p>
+                <p class="text-lg font-bold mb-4">Transaksi Tiara Brand</p>
                 <hr class="my-4">
                 <div class="flex justify-between">
-                    <p class="text-lg font-bold">Total transaksi</p>
-                    <p class="mb-1 text-lg font-bold"><?= $totalTransactions = $transactionCounter - 1; ?></p>
+                    <p class="text-lg font-bold">Total transaksi selesai : </p>
+                    <p class="mb-1 text-lg font-bold"><?= $totalTransactions = $transactionDoneCounter; ?></p>
                 </div>
                 <div class="my-4"></div>
                 <div class="flex justify-between">
-                    <p class="text-lg font-bold">Total</p>
+                    <p class="text-lg font-bold">Total pendapatan : </p>
                     <?php
                     $formattedCartTotal = number_format($transactionstotalHarga, 0, ',', '.');
                     ?>

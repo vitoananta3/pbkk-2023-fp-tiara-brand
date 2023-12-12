@@ -35,6 +35,8 @@ $routes->get('/keranjang', 'Keranjang::index');
 $routes->get('/transaksi', 'Keranjang::transactionsIndex');
 $routes->put('/checkout', 'Keranjang::checkout');
 $routes->get('/transaksi/(:segment)', 'Keranjang::detail/$1');
+$routes->get('/transaksi-admin', 'Keranjang::transactionsIndexAdmin');
+$routes->put('/done/(:num)', 'Keranjang::done/$1');
 
 $routes->post('/saveitem/(:num)', 'ItemKeranjang::saveItem/$1');
 $routes->put('/updateitem/(:num)', 'ItemKeranjang::updateStokBeforeDeleteItem/$1');

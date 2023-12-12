@@ -35,4 +35,14 @@ class KeranjangModel extends Model
     {
         return $this->where(['pengguna_id' => $userId])->where(['isActive' => '0'])->countAllResults();
     }
+
+    public function getKeranjangAllTidakActiveAdmin()
+    {
+        return $this->where(['isActive' => '0'])->findAll();
+    }
+
+    public function getKeranjangAllDoneAdmin()
+    {
+        return $this->where(['isActive' => '0'])->where(['isDone' => '1'])->findAll();
+    }
 }

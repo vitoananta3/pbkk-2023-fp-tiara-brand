@@ -14,4 +14,12 @@ class PenggunaModel extends Model
     public function getUser($email){
         return $this->where(['email' => $email])->first();
     }
+
+    public function getUserAll(){
+        return $this->findAll();
+    }
+
+    public function getUserById($id){
+        return $this->where(['id' => $id])->first();
+    }
 }

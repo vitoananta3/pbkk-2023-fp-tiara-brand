@@ -56,6 +56,12 @@
                 <li>
                     <a href="<?= base_url() ?>pakaian" class="block py-2 px-3 text-[#E5E9F0] rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#81A1C1] md:p-0 dark:text-white md:dark:hover:text-[#81A1C1] dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent <?php echo $page === 'pakaian' ? 'active-nav-item' : ''; ?>">Pakaian</a>
                 </li>
+                <?php if (session()->has('user')) : ?>
+                    <?php $user = session()->get('user'); ?>
+                    <li>
+                        <a href="<?= base_url() ?>transaksi-admin" class="block py-2 px-3 text-[#E5E9F0] rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#81A1C1] md:p-0 dark:text-white md:dark:hover:text-[#81A1C1] dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent <?php echo $page === 'transaksi' ? 'active-nav-item' : ''; ?>">Transaksi</a>
+                    </li>
+                <?php endif; ?>
             </ul>
         </div>
     </div>

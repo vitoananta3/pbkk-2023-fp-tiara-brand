@@ -107,7 +107,15 @@
             </div>
             <!-- Sub total -->
             <div class="mt-6 h-full rounded-lg border bg-white p-6 shadow-md md:mt-0 md:w-1/3">
-                <p class="text-lg font-bold">Transaction Anda</p>
+                <?php if (session()->has('user')) : ?>
+                    <?php $user = session()->get('user'); ?>
+                    <?php if ($user['isAdmin'] == '1') : ?>
+                        <p class="text-lg font-bold">Transaksi <?php echo $userKeranjang['namaDepan'] . ' ' . $userKeranjang['namaBelakang']; ?></p>
+                    <?php else : ?>
+                        <p class="text-lg font-bold">Transaction Anda</p>
+                    <?php endif; ?>
+                <?php endif; ?>
+
                 <hr class="my-4">
                 </hr>
                 <div class="flex justify-between">
@@ -119,9 +127,28 @@
                 </div>
                 <div class="my-4"></div>
                 <div class="flex justify-end">
-                    <a href="/transaksi" class=" self-end text-sm border border-[#434C5E] hover:bg-[#81A1C1] text-[#434C5E] hover:text-[#434C5E] rounded-md px-5 py-2.5 transition-colors duration-200">
-                        Kembali ke list transaksi
-                    </a>
+                    <?php if (session()->has('user')) : ?>
+                        <?php $user = session()->get('user'); ?>
+                        <?php if ($user['isAdmin'] == '1') : ?>
+                            <div class="flex gap-4">
+                                <a href="<?= base_url() ?>transaksi-admin" class="self-end text-sm border border-[#434C5E] hover:bg-[#81A1C1] text-[#434C5E] hover:text-[#434C5E] rounded-md px-5 py-2.5 transition-colors duration-200">
+                                    Kembali ke list transaksi
+                                </a>
+                                <?= form_open('done/' . $keranjang['id']) ?>
+                                <?= csrf_field() ?>
+                                <input type="hidden" name="_method" value="PUT">
+                                <input type="hidden" name="totalHarga" value="<?php
+                                                                                echo $cartTotal
+                                                                                ?>">
+                                <?= form_submit('submit', 'Selesaikan transaksi', ['class' => 'btext-sm text-center bg-[#434C5E] hover:bg-[#81A1C1] text-[#E5E9F0] hover:text-[#434C5E] rounded-md px-2 py-2 transition-colors duration-200 border-2 border-black']) ?>
+                                <?= form_close() ?>
+                            </div>
+                        <?php else : ?>
+                            <a href="/transaksi" class="self-end text-sm border border-[#434C5E] hover:bg-[#81A1C1] text-[#434C5E] hover:text-[#434C5E] rounded-md px-5 py-2.5 transition-colors duration-200">
+                                Kembali ke list transaksi
+                            </a>
+                        <?php endif; ?>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>

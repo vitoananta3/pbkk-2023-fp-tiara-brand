@@ -9,12 +9,14 @@ class Keranjang extends BaseController
     protected $keranjangModel;
     protected $itemKeranjangModel;
     protected $pakaianModel;
+    protected $userModel;
 
     public function __construct()
     {
         $this->keranjangModel = new \App\Models\KeranjangModel();
         $this->itemKeranjangModel = new \App\Models\ItemKeranjangModel();
         $this->pakaianModel = new \App\Models\PakaianModel();
+        $this->userModel = new \App\Models\PenggunaModel();
     }
 
     public function index()
@@ -97,6 +99,26 @@ class Keranjang extends BaseController
         return view('transaksi/index', $data);
     }
 
+    public function transactionsIndexAdmin()
+    {
+        $user = session()->get('user');
+        if (!$user || $user['isAdmin'] == '0') {
+            return redirect()->to('/login');
+        }
+
+        $keranjangTidakActiveAll = $this->keranjangModel->getKeranjangAllTidakActiveAdmin();
+
+        $kerajanganDoneAll = $this->keranjangModel->getKeranjangAllDoneAdmin();
+
+        $data = [
+            'title' => 'Transaksi | Tiara Brand',
+            'page' => 'transaksi',
+            'keranjangTidakActiveAll' => $keranjangTidakActiveAll,
+            'kerajanganDoneAll' => $kerajanganDoneAll
+        ];
+        return view('transaksi/index-admin', $data);
+    }
+
     public function checkout()
     {
         $user = session()->get('user');
@@ -123,7 +145,7 @@ class Keranjang extends BaseController
     public function detail($id)
     {
         $user = session()->get('user');
-        if (!$user || $user['isAdmin'] == '1') {
+        if (!$user) {
             return redirect()->to('/login');
         }
 
@@ -135,13 +157,42 @@ class Keranjang extends BaseController
 
         $pakaianAll = $this->pakaianModel->getPakaianByIds($itemIds);
 
+        $userKeranjang = $this->userModel->getUserById($keranjang['pengguna_id']);
+
         $data = [
             'title' => 'Detail Transaksi | Tiara Brand',
             'page' => 'transaksi',
             'keranjang' => $keranjang,
             'itemKeranjangAll' => $keranjangItems,
             'pakaianAll' => $pakaianAll,
+            'userKeranjang' => $userKeranjang
         ];
+
+        // dd($data);
         return view('transaksi/detail', $data);
+    }
+
+    public function done($id)
+    {
+        $user = session()->get('user');
+        if (!$user || $user['isAdmin'] == '0') {
+            return redirect()->to('/login');
+        }
+
+        $keranjang = $this->keranjangModel->getKeranjangById($id);
+
+        $keranjang_id = $keranjang['id'];
+
+        // dd($this->request->getVar('totalHarga'));
+
+        $this->keranjangModel->save([
+            'id' => $keranjang_id,
+            'isActive' => false,
+            'isDone' => true,
+            'totalHarga' => $this->request->getVar('totalHarga')
+        ]);
+
+        session()->setFlashdata('message', 'Berhasil menyelesaikan transaksi');
+        return redirect()->to('/transaksi-admin');
     }
 }

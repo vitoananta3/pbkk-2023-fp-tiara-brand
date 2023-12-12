@@ -183,8 +183,8 @@ class Init extends Seeder
 
         $data_pengguna = [
             [
-                'firstName' => 'Admin',
-                'lastName' => 'Tiara Brand',
+                'namaDepan' => 'Admin',
+                'namaBelakang' => 'Tiara Brand',
                 'email' => 'admin@gmail.com',
                 'password' => 'admin2193',
                 'isAdmin' => '1',
@@ -192,8 +192,8 @@ class Init extends Seeder
                 'updated_at' => Time::now(),
             ],
             [
-                'firstName' => 'Vito',
-                'lastName' => 'Ananta',
+                'namaDepan' => 'Vito',
+                'namaBelakang' => 'Ananta',
                 'email' => 'vito1234@gmail.com',
                 'password' => 'vito1234',
                 'isAdmin' => '0',
@@ -201,8 +201,8 @@ class Init extends Seeder
                 'updated_at' => Time::now(),
             ],
             [
-                'firstName' => 'Travis',
-                'lastName' => 'Barker',
+                'namaDepan' => 'Travis',
+                'namaBelakang' => 'Barker',
                 'email' => 'travis182@blink.com',
                 'password' => 'travis182',
                 'isAdmin' => '0',

@@ -27,7 +27,7 @@
             </div>
             <div class="my-8"></div>
             <div class="text-sm">
-                <?= form_submit('submit', 'Atur Category', ['class' => 'bg-[#434C5E] hover:bg-[#81A1C1] text-[#E5E9F0] hover:text-[#434C5E] rounded-md w-full px-5 py-2.5 transition-colors duration-200 border-2 border-black']) ?>
+                <?= form_submit('submit', 'Edit Kategori', ['class' => 'bg-[#434C5E] hover:bg-[#81A1C1] text-[#E5E9F0] hover:text-[#434C5E] rounded-md w-full px-5 py-2.5 transition-colors duration-200 border-2 border-black']) ?>
             </div>
             <div class="my-8"></div>
             <?= form_close() ?>

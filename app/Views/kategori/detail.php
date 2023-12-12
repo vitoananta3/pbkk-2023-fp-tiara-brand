@@ -15,7 +15,7 @@
     <div class="mt-8"></div>
     <div class="flex gap-4">
         <a href="<?= base_url(); ?>kategori/edit/<?= $kategori['slug']; ?>" class="max-w-screen-xl flex gap-2 text-sm bg-[#434C5E] hover:bg-[#81A1C1] text-[#E5E9F0] hover:text-[#434C5E] rounded-md px-3 py-2.5 transition-colors duration-200 border-2 border-black">
-            <div>Atur Kategori</div>
+            <div>Edit Kategori</div>
         </a>
         <form action="<?= base_url(); ?>/kategori/<?= $kategori['id']; ?>" method="post">
             <?= csrf_field(); ?>

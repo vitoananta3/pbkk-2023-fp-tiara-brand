@@ -22,3 +22,11 @@ $routes->get('/kategori/edit/(:segment)', 'Kategori::edit/$1');
 $routes->put('/kategori/update/(:num)', 'Kategori::update/$1');
 $routes->delete('/kategori/(:num)', 'Kategori::delete/$1');
 $routes->get('/kategori/(:segment)', 'Kategori::detail/$1');
+
+$routes->get('/pakaian', 'Pakaian::index');
+$routes->get('/pakaian/create', 'Pakaian::create');
+$routes->post('/pakaian/save', 'Pakaian::save');
+$routes->get('/pakaian/edit/(:segment)', 'Pakaian::edit/$1');
+$routes->put('/pakaian/update/(:num)', 'Pakaian::update/$1');
+$routes->delete('/pakaian/(:num)', 'Pakaian::delete/$1');
+$routes->get('/pakaian/(:any)', 'Pakaian::detail/$1');

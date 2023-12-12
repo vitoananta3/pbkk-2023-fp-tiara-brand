@@ -19,7 +19,7 @@ class Kategori extends BaseController
         $data = [
             'title' => 'Kategori | Tiara Brand',
             'page' => 'kategori',
-            'kategori' => $this->kategoriModel->getCategories()
+            'kategori' => $this->kategoriModel->getKategoriAll()
         ];
         
         return view('kategori/index', $data);
@@ -35,7 +35,7 @@ class Kategori extends BaseController
         $data = [
             'title' => 'Detail Kategori | Tiara Brand',
             'page' => 'kategori',
-            'kategori' => $this->kategoriModel->getCategory($slug),
+            'kategori' => $this->kategoriModel->getKategori($slug),
         ];
 
 
@@ -43,7 +43,6 @@ class Kategori extends BaseController
             throw new \CodeIgniter\Exceptions\PageNotFoundException('Kategori ' . $slug . ' tidak ditemukan');
         }
 
-        // dd($data['category']);
         return view('kategori/detail', $data);
     }
 
@@ -111,7 +110,7 @@ class Kategori extends BaseController
             'title' => 'Edit Kategori | Tiara Brand',
             'page' => 'kategori',
             'validation' => session('data') ? session('data')['validation'] : \Config\Services::validation(),
-            'kategori' => $this->kategoriModel->getCategory($slug)
+            'kategori' => $this->kategoriModel->getKategori($slug)
         ];
 
         return view('kategori/edit', $data);
@@ -135,12 +134,6 @@ class Kategori extends BaseController
                 ]
             ]
         ];
-
-        // nama checking
-        // $oldCategory = $this->kategoriModel->getCategory($this->request->getVar('slug'));
-        // if ($oldCategory['nama'] == $this->request->getVar('nama')) {
-        //     unset($rules['nama']['rules'][1]);
-        // }
 
         if (!$this->validate($rules)) {
             $data = [

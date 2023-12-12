@@ -11,25 +11,25 @@ class KategoriModel extends Model
     protected $allowedFields    = ['nama', 'slug'];
     protected $useTimestamps = true;
 
-    public function getCategories()
+    public function getKategoriAll()
     {
         return $this->findAll();
     }
 
-    public function getCategoryIds()
+    public function getKategoriIdAll()
     {
-        $categories = $this->findAll();
-        $categoryIds = array_column($categories, 'id');
+        $kategori = $this->findAll();
+        $kategoriIds = array_column($kategori, 'id');
 
-        return $categoryIds;
+        return $kategoriIds;
     }
 
-    public function getCategory($slug)
+    public function getKategori($slug)
     {
         return $this->where(['slug' => $slug])->first();
     }
 
-    public function getCategoryById($id)
+    public function getKategoriById($id)
     {
         return $this->where(['id' => $id])->first();
     }   

@@ -30,3 +30,14 @@ $routes->get('/pakaian/edit/(:segment)', 'Pakaian::edit/$1');
 $routes->put('/pakaian/update/(:num)', 'Pakaian::update/$1');
 $routes->delete('/pakaian/(:num)', 'Pakaian::delete/$1');
 $routes->get('/pakaian/(:any)', 'Pakaian::detail/$1');
+
+$routes->get('/keranjang', 'Keranjang::index');
+$routes->get('/transaksi', 'Keranjang::transactionsIndex');
+$routes->put('/checkout', 'Keranjang::checkout');
+$routes->get('/transaksi/(:segment)', 'Keranjang::detail/$1');
+
+$routes->post('/saveitem/(:num)', 'ItemKeranjang::saveItem/$1');
+$routes->put('/updateitem/(:num)', 'ItemKeranjang::updateStockBeforeDeleteItem/$1');
+$routes->put('/updateitem/decrement/(:num)', 'ItemKeranjang::updateItemDecrement/$1');
+$routes->put('/updateitem/increment/(:num)', 'ItemKeranjang::updateItemIncrement/$1');
+$routes->delete('/deleteitem/(:num)', 'ItemKeranjang::deleteItem/$1');

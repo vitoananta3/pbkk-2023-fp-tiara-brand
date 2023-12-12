@@ -122,10 +122,10 @@
                     <?php $user = session()->get('user'); ?>
                     <form action="<?= base_url(); ?>saveitem/<?= $pakaian['id']; ?>" method="post">
                         <?= csrf_field(); ?>
-                        <input type="hidden" name="user_id" value="<?= esc($user['id']); ?>">
+                        <input type="hidden" name="pengguna_id" value="<?= esc($user['id']); ?>">
                         <input type="hidden" name="pakaian_id" value="<?php $pakaian_id = $pakaian['id'];
                                                                     echo $pakaian_id; ?>">
-                        <input type="hidden" name="quantity" value="1">
+                        <input type="hidden" name="kuantitas" value="1">
                         <button type="submit" class="flex items-center gap-2 text-sm bg-[#434C5E] hover:bg-[#81A1C1] text-[#E5E9F0] hover:text-[#434C5E] rounded-md px-3 py-2.5 transition-colors duration-200">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />

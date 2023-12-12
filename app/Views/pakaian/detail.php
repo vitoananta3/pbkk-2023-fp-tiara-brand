@@ -96,7 +96,7 @@
                 <div class="grid grid-cols-4 gap-0">
                     <div class="">Ukuran:</div>
                     <div class="col-span-3">
-                        <span class="border border-black p-1 rounded-md">
+                        <span class="border border-black px-3 py-1 rounded-md">
                             <?php $ukuran = $pakaian['ukuran'];
                             echo $ukuran; ?>
                         </span>

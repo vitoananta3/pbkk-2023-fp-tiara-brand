@@ -123,7 +123,7 @@ class ItemKeranjang extends BaseController
         return redirect()->to('/keranjang');
     }
 
-    public function updatestokBeforeDeleteItem($id)
+    public function updateStokBeforeDeleteItem($id)
     {
         $item = $this->itemKeranjangModel->find($id);
 

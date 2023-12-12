@@ -32,27 +32,37 @@ class Keranjang extends BaseController
                 'page' => 'keranjang',
                 'keranjang' => [],
                 'itemKeranjangAll' => [],
-                'oakaianAll' => []
+                'pakaianAll' => []
             ];
             return view('keranjang/index', $data);
         } else {
             $keranjang_id = $keranjang['id'];
-
             $keranjangItems = $this->itemKeranjangModel->getItemAll($keranjang_id);
+            // dd($keranjangItems);
 
-            $itemIds = $this->itemKeranjangModel->getItemIdAll($keranjang_id);
-
-            if (!$itemIds) {
+            if ($keranjangItems == null) {
                 $data = [
                     'title' => 'Keranjang | Tiara Brand',
                     'page' => 'keranjang',
-                    'keranjang' => $keranjang,
-                    'itemKeranjangAll' => $keranjangItems,
+                    'keranjang' => [],
+                    'itemKeranjangAll' => [],
                     'pakaianAll' => []
                 ];
-                return view('pakaian/index', $data);
+                return view('keranjang/index', $data);
             } else {
+                $itemIds = $this->itemKeranjangModel->getItemIdAll($keranjang_id);
+
                 $pakaianAll = $this->pakaianModel->getPakaianByIds($itemIds);
+
+                // Menambahkan informasi pakaian ke setiap item di keranjang
+                foreach ($keranjangItems as &$item) {
+                    foreach ($pakaianAll as $pakaian) {
+                        if ($item['pakaian_id'] == $pakaian['id']) {
+                            $item['pakaian_info'] = $pakaian;
+                            break;
+                        }
+                    }
+                }
 
                 $data = [
                     'title' => 'Keranjang | Tiara Brand',
@@ -61,7 +71,8 @@ class Keranjang extends BaseController
                     'itemKeranjangAll' => $keranjangItems,
                     'pakaianAll' => $pakaianAll
                 ];
-                return view('pakaian/index', $data);
+                // dd($data);
+                return view('keranjang/index', $data);
             }
         }
     }
@@ -122,14 +133,14 @@ class Keranjang extends BaseController
 
         $itemIds = $this->itemKeranjangModel->getItemIdAll($id);
 
-        $pakaianAll = $this->pakaianModel->getBooksByIds($itemIds);
+        $pakaianAll = $this->pakaianModel->getPakaianByIds($itemIds);
 
         $data = [
             'title' => 'Detail Transaksi | Tiara Brand',
             'page' => 'transaksi',
             'keranjang' => $keranjang,
             'itemKeranjangAll' => $keranjangItems,
-            'pakaianAll' => $pakaianAll
+            'pakaianAll' => $pakaianAll,
         ];
         return view('transaksi/detail', $data);
     }

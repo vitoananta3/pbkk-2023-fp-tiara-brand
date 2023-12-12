@@ -87,7 +87,7 @@
                 <label class="block text-[#434C5E] dark:[#434C5E]" for="gambar" id="gambar-label">Gambar</label>
                 <img class="card-image-preview img-thumbnail img-preview" src="<?= base_url(); ?>assets/gambar-pakaian/tidak-ada-gambar.jpg" alt="preview-gambar-pakaian">
                 <input onchange="previewImg()" id="gambar" name="gambar" class="block w-full text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-[#434C5E] focus:outline-none dark:bg-[#E5E9F0] dark:border-<?= session('validation_errors') && array_key_exists('gambar', session('validation_errors')) && session('validation_errors')['gambar'] ? 'red-600' : '[#434C5E]' ?> dark:placeholder-<?= session('validation_errors') && array_key_exists('gambar', session('validation_errors')) && session('validation_errors')['gambar'] ? 'red-600' : '[#434C5E]' ?>" id="gambar" type="file">
-                <p class="mt-1 text-<?= session('validation_errors') && array_key_exists('gambar', session('validation_errors')) && session('validation_errors')['gambar'] ? 'red-600' : '[#434C5E]' ?> font-thin">(.jpg, .jpeg atau .png | maks ukuran 1MB</p>
+                <p class="mt-1 text-<?= session('validation_errors') && array_key_exists('gambar', session('validation_errors')) && session('validation_errors')['gambar'] ? 'red-600' : '[#434C5E]' ?> font-thin">(.jpg, .jpeg atau .png | maks ukuran 1MB)</p>
                 <div class="text-red-600"><?php
                                             if (session('validation_errors') && array_key_exists('gambar', session('validation_errors')) && session('validation_errors')['gambar']) {
                                                 echo session('validation_errors')['gambar'];

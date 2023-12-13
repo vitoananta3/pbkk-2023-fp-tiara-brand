@@ -36,6 +36,22 @@
             }, 2000);
         }
     </script>
+    <script>
+        const copyText = document.querySelector("#copyMe");
+        const showText = document.querySelector("#showCopyStatus");
+        
+        const copyMeOnClipboard = () => {
+            copyText.select();
+            copyText.setSelectionRange(0, 99999); //for mobile phone
+            document.execCommand("copy");
+            showText.innerHTML = `Link produk berhasil dicopy ke clipboard`
+            setTimeout(() => {
+                showText.innerHTML = ''
+            }, 3000)
+        }
+
+        copyText.addEventListener("click", copyMeOnClipboard);
+    </script>
 </body>
 
 </html>

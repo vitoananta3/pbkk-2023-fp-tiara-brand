@@ -59,7 +59,7 @@
                                     </svg>
                                     <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Apakah anda yakin ingin mengahapus pakaian ini?</h3>
                                     <button data-modal-hide="popup-modal" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center me-2" type="submit" id="close-button">
-                                    Ya, saya yakin
+                                        Ya, saya yakin
                                     </button>
                                     <button data-modal-hide="popup-modal" type="button" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600" id="close-button">No, cancel</button>
                                 </div>
@@ -117,6 +117,16 @@
                                             echo $stok; ?></div>
                 </div>
             </div>
+            <div class="grid grid-cols-4 gap-0">
+                <input type="text" id="copyMe" value="<?= base_url(); ?>pakaian/<?= $pakaian['id']; ?>" class="opacity-0 cursor-default">
+            </div>
+            <div class="grid grid-cols-4 gap-0 my-4">
+                <button class=" flex gap-4 items-center justify-center text-sm border border-[#434C5E] hover:bg-[#81A1C1] text-[#434C5E] hover:text-[#434C5E] rounded-md px-5 py-2.5 transition-colors duration-200" onclick="copyMeOnClipboard()">Bagikan <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M7.217 10.907a2.25 2.25 0 100 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186l9.566-5.314m-9.566 7.5l9.566 5.314m0 0a2.25 2.25 0 103.935 2.186 2.25 2.25 0 00-3.935-2.186zm0-12.814a2.25 2.25 0 103.933-2.185 2.25 2.25 0 00-3.933 2.185z" />
+                    </svg>
+                </button>
+                <p class="text-green-700 col-span-3 mx-4 flex items-center" id="showCopyStatus"></p>
+            </div>
             <div class="flex flex-col justify-center flex-grow self-center gap-10 items-center">
                 <?php if (session()->has('user')) : ?>
                     <?php $user = session()->get('user'); ?>
@@ -124,7 +134,7 @@
                         <?= csrf_field(); ?>
                         <input type="hidden" name="pengguna_id" value="<?= esc($user['id']); ?>">
                         <input type="hidden" name="pakaian_id" value="<?php $pakaian_id = $pakaian['id'];
-                                                                    echo $pakaian_id; ?>">
+                                                                        echo $pakaian_id; ?>">
                         <input type="hidden" name="kuantitas" value="1">
                         <button type="submit" class="flex items-center gap-2 text-sm bg-[#434C5E] hover:bg-[#81A1C1] text-[#E5E9F0] hover:text-[#434C5E] rounded-md px-3 py-2.5 transition-colors duration-200">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
